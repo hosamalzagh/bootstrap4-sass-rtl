@@ -53,6 +53,9 @@ body {
   text-align: #{$left}; // 3
   background-color: $body-bg; // 2
 }
+body, html {
+  direction: $direction;
+}
 
 // Suppress the focus outline on elements that cannot be accessed via keyboard.
 // This prevents an unwanted focus outline from appearing around elements that

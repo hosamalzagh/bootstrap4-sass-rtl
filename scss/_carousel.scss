@@ -42,14 +42,14 @@
   display: block;
 }
 
-.carousel-item-next:not(.carousel-item-#{$left}),
-.active.carousel-item-#{$right} {
-  transform: translateX(100%);
+.carousel-item-next:not(.carousel-item-left),
+.active.carousel-item-right {
+  transform: translateX(-100%);
 }
 
-.carousel-item-prev:not(.carousel-item-#{$right}),
-.active.carousel-item-#{$left} {
-  transform: translateX(-100%);
+.carousel-item-prev:not(.carousel-item-right),
+.active.carousel-item-left {
+  transform: translateX(100%);
 }
 
 
@@ -111,13 +111,24 @@
 .carousel-control-prev {
   #{$left}: 0;
   @if $enable-gradients {
-    background: linear-gradient(90deg, rgba($black, .25), rgba($black, .001));
+    @if($direction == rtl){
+        background: linear-gradient(270deg, rgba($black, .25), rgba($black, .001));
+    }@else{
+        background: linear-gradient(90deg, rgba($black, .25), rgba($black, .001));
+    }
+    //background: linear-gradient(90deg, rgba($black, .25), rgba($black, .001));
   }
 }
 .carousel-control-next {
   #{$right}: 0;
   @if $enable-gradients {
-    background: linear-gradient(270deg, rgba($black, .25), rgba($black, .001));
+   @if($direction == rtl){
+      background: linear-gradient(90deg, rgba($black, .25), rgba($black, .001));
+    }@else{
+      background: linear-gradient(270deg, rgba($black, .25), rgba($black, .001));
+    }
+    //background: linear-gradient(270deg, rgba($black, .25), rgba($black, .001));
+
   }
 }
 
@@ -130,10 +141,19 @@
   background: no-repeat 50% / 100% 100%;
 }
 .carousel-control-prev-icon {
-  background-image: $carousel-control-prev-icon-bg;
+  @if($direction == rtl) {
+    background-image: $carousel-control-next-icon-bg;
+  }@else{
+      background-image: $carousel-control-prev-icon-bg;
+  }
 }
 .carousel-control-next-icon {
-  background-image: $carousel-control-next-icon-bg;
+  @if($direction == rtl) {
+    background-image: $carousel-control-prev-icon-bg;
+  }@else{
+      background-image: $carousel-control-next-icon-bg;
+  }
+
 }
 
 
