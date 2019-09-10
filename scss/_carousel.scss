@@ -29,9 +29,9 @@
 .carousel-item {
   position: relative;
   display: none;
-  float: left;
+  float: #{$left};
   width: 100%;
-  margin-right: -100%;
+  margin-#{$right}: -100%;
   backface-visibility: hidden;
   @include transition($carousel-transition);
 }
@@ -42,13 +42,13 @@
   display: block;
 }
 
-.carousel-item-next:not(.carousel-item-left),
-.active.carousel-item-right {
+.carousel-item-next:not(.carousel-item-#{$left}),
+.active.carousel-item-#{$right} {
   transform: translateX(100%);
 }
 
-.carousel-item-prev:not(.carousel-item-right),
-.active.carousel-item-left {
+.carousel-item-prev:not(.carousel-item-#{$right}),
+.active.carousel-item-#{$left} {
   transform: translateX(-100%);
 }
 
@@ -65,14 +65,14 @@
   }
 
   .carousel-item.active,
-  .carousel-item-next.carousel-item-left,
-  .carousel-item-prev.carousel-item-right {
+  .carousel-item-next.carousel-item-#{$left},
+  .carousel-item-prev.carousel-item-#{$right} {
     z-index: 1;
     opacity: 1;
   }
 
-  .active.carousel-item-left,
-  .active.carousel-item-right {
+  .active.carousel-item-#{$left},
+  .active.carousel-item-#{$right} {
     z-index: 0;
     opacity: 0;
     @include transition(0s $carousel-transition-duration opacity);
@@ -109,13 +109,13 @@
   }
 }
 .carousel-control-prev {
-  left: 0;
+  #{$left}: 0;
   @if $enable-gradients {
     background: linear-gradient(90deg, rgba($black, .25), rgba($black, .001));
   }
 }
 .carousel-control-next {
-  right: 0;
+  #{$right}: 0;
   @if $enable-gradients {
     background: linear-gradient(270deg, rgba($black, .25), rgba($black, .001));
   }
@@ -150,7 +150,7 @@
   z-index: 15;
   display: flex;
   justify-content: center;
-  padding-left: 0; // override <ol> default
+  padding-#{$left}: 0; // override <ol> default
   // Use the .carousel-control's width as margin so we don't overlay those
   margin-right: $carousel-control-width;
   margin-left: $carousel-control-width;

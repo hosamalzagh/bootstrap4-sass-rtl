@@ -7,7 +7,7 @@
   flex-direction: column;
 
   // No need to set list-style: none; since .list-group-item is block level
-  padding-left: 0; // reset padding because ul and ol
+  padding-#{$left}: 0; // reset padding because ul and ol
   margin-bottom: 0;
 }
 
@@ -89,7 +89,7 @@
       flex-direction: row;
 
       .list-group-item {
-        margin-right: -$list-group-border-width;
+        margin-#{$right}: -$list-group-border-width;
         margin-bottom: 0;
 
         &:first-child {
@@ -98,7 +98,7 @@
         }
 
         &:last-child {
-          margin-right: 0;
+          margin-#{$right}: 0;
           @include border-right-radius($list-group-border-radius);
           @include border-bottom-left-radius(0);
         }
